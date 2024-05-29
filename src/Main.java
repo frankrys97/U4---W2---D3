@@ -3,6 +3,7 @@ import enums.Category;
 import order.Order;
 import product.Product;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -50,6 +51,11 @@ public class Main {
         for (int i = 0; i < 3; i++) {
             orders.add(orderSupplier.get());
         }
+
+
+        System.out.println("La lista degli ordini del nostro negozio: ");
+        System.out.println(orders);
+        System.out.println();
 
         // Esercizio 1
 
@@ -104,6 +110,18 @@ public class Main {
 
         // Esercizio 4
 
+        LocalDate startDate = LocalDate.of(2021, 2, 1);
+        LocalDate endDate = LocalDate.of(2022, 4, 1);
 
+        List<Product> productClient2BetwDate = orders.stream().filter(order -> order.getCustomer().getTier() == 2 && !order.getOrderDate().isBefore(startDate) && !order.getOrderDate().isAfter(endDate)).flatMap(order -> order.getProducts().stream()).toList();
+
+        System.out.println("La lista di prodotti per clienti di livello 2 con ordini tra il 1/2/2021 e il 1/4/2021:");
+        if (productClient2BetwDate.isEmpty()) {
+            System.out.println("Nessun prodotto trovato");
+            System.out.println();
+        } else {
+            System.out.println(productClient2BetwDate);
+            System.out.println();
+        }
     }
 }
