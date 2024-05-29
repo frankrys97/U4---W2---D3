@@ -26,6 +26,13 @@ public class Main {
             products.add(productSupplier.get());
             customers.add(customerSupplier.get());
         }
+        System.out.println("La lista prodotti del nostro negozio: ");
+        System.out.println(products);
+        System.out.println();
+
+        System.out.println("La lista clienti del nostro negozio: ");
+        System.out.println(customers);
+        System.out.println();
 
         Supplier<Order> orderSupplier = () -> {
             Customer customer = customers.get(random.nextInt(customers.size()));
@@ -44,7 +51,58 @@ public class Main {
             orders.add(orderSupplier.get());
         }
 
-        // Esercizio 1: Ottenere una lista di prodotti della categoria Books ed hanno un prezzo maggiore di 100
+        // Esercizio 1
+
+        List<Product> bookProducts = products
+                .stream()
+                .filter(product -> product.getCategory().equals(Category.BOOKS) && product.getPrice() > 10)
+                // ho messo 10 e non 100 poichè avendo generato randomicamente tutti i valori ho preferito mettere un numero più basso
+                // altrimenti la probabilità che uscisse un libro nella lista degli ordini con prezzo maggiore di 100 era molto bassa!!!
+                .toList();
+
+
+        System.out.println("La lista di prodotti per libri con prezzo maggiore di 10:");
+        if (bookProducts.isEmpty()) {
+            System.out.println("Nessun libro trovato");
+            System.out.println();
+        } else {
+            System.out.println(bookProducts);
+            System.out.println();
+        }
+
+        // Esercizio 2
+
+        List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals(Category.BABY))).toList();
+
+
+        System.out.println("La lista di prodotti per bambini:");
+
+        if (babyOrders.isEmpty()) {
+            System.out.println("Nessun prodotto per bambini trovato");
+            System.out.println();
+        } else {
+            System.out.println(babyOrders);
+            System.out.println();
+        }
+
+        // Esercizio 3
+
+        List<Product> boysWithDiscount = products.stream().filter(product -> product.getCategory().equals(Category.BOYS)).map(product -> {
+            product.setPrice(product.getPrice() * 0.9);
+            return product;
+        }).toList();
+
+
+        System.out.println("La lista di prodotti per ragazzi con sconto del 10%:");
+        if (boysWithDiscount.isEmpty()) {
+            System.out.println("Nessun prodotto per ragazzi trovato");
+            System.out.println();
+        } else {
+            System.out.println(boysWithDiscount);
+            System.out.println();
+        }
+
+        // Esercizio 4
 
 
     }

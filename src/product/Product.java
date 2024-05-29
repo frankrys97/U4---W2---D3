@@ -9,7 +9,7 @@ public class Product {
 
     long id;
     String name;
-    String category;
+    Category category;
     double price;
 
 
@@ -19,7 +19,7 @@ public class Product {
 
         this.id = Math.abs(random.nextLong());
         this.name = generateRandomicName(category);
-        this.category = String.valueOf(category);
+        this.category = category;
         this.price = price;
     }
 
@@ -35,6 +35,10 @@ public class Product {
                 return "Toy " + random.nextInt(100, 999);
             case SCHOOL:
                 return "Notebook " + random.nextInt(100, 999);
+            case BABY:
+                return "Diaper " + random.nextInt(100, 999);
+            case BOYS:
+                return "Shirt " + random.nextInt(100, 999);
             default:
                 return "Unknown ";
         }
@@ -55,13 +59,10 @@ public class Product {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 
     public double getPrice() {
         return price;

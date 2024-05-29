@@ -40,18 +40,13 @@ public class Order {
 
     public static String generateRandomicStatus(Status status) {
 
-        switch (status) {
-            case ORDERED:
-                return "Ordered";
-            case PENDING:
-                return "Pending";
-            case DELIVERED:
-                return "Delivered";
-            case CANCELLED:
-                return "Cancelled";
-            default:
-                return "Unknown";
-        }
+        return switch (status) {
+            case ORDERED -> "Ordered";
+            case PENDING -> "Pending";
+            case DELIVERED -> "Delivered";
+            case CANCELLED -> "Cancelled";
+            default -> "Unknown";
+        };
 
     }
 

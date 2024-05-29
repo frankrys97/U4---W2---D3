@@ -4,5 +4,7 @@ public enum Category {
     BOOKS,
     ELECTRONICS,
     TOYS,
-    SCHOOL
+    SCHOOL,
+    BABY,
+    BOYS
 }
