@@ -10,12 +10,12 @@ import java.util.Random;
 
 
 public class Order {
-    long id;
-    String status;
-    LocalDate orderDate;
-    LocalDate deliveryDate;
-    List<Product> products;
-    Customer customer;
+    protected long id;
+    protected String status;
+    protected LocalDate orderDate;
+    protected LocalDate deliveryDate;
+    protected List<Product> products;
+    protected Customer customer;
 
 
     public Order(Customer customer, List<Product> products) {

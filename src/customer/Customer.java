@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Customer {
 
-    long id;
-    String name;
-    int tier;
+    protected long id;
+    protected String name;
+    protected int tier;
 
     public Customer() {
 

@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class Product {
 
-    long id;
-    String name;
-    Category category;
-    double price;
+    protected long id;
+    protected String name;
+    protected Category category;
+    protected double price;
 
 
     public Product(Category category, double price) {
