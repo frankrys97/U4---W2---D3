@@ -113,9 +113,9 @@ public class Main {
         LocalDate startDate = LocalDate.of(2021, 2, 1);
         LocalDate endDate = LocalDate.of(2022, 4, 1);
 
-        List<Product> productClient2BetwDate = orders.stream().filter(order -> order.getCustomer().getTier() == 2 && !order.getOrderDate().isBefore(startDate) && !order.getOrderDate().isAfter(endDate)).flatMap(order -> order.getProducts().stream()).toList();
+        List<Product> productClient2BetwDate = orders.stream().filter(order -> order.getCustomer().getTier() == 2 && order.getOrderDate().isAfter(startDate) && order.getOrderDate().isBefore(endDate)).flatMap(order -> order.getProducts().stream()).toList();
 
-        System.out.println("La lista di prodotti per clienti di livello 2 con ordini tra il 1/2/2021 e il 1/4/2021:");
+        System.out.println("La lista di prodotti per clienti di livello 2 con ordini tra il 1/2/2021 e il 1/4/2022:");
         if (productClient2BetwDate.isEmpty()) {
             System.out.println("Nessun prodotto trovato");
             System.out.println();
