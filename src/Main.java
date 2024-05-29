@@ -81,10 +81,10 @@ public class Main {
         List<Order> babyOrders = orders.stream().filter(order -> order.getProducts().stream().anyMatch(product -> product.getCategory().equals(Category.BABY))).toList();
 
 
-        System.out.println("La lista di prodotti per bambini:");
+        System.out.println("La lista di ordini con prodotti per bambini:");
 
         if (babyOrders.isEmpty()) {
-            System.out.println("Nessun prodotto per bambini trovato");
+            System.out.println("Nessun ordine trovato");
             System.out.println();
         } else {
             System.out.println(babyOrders);
